@@ -1,0 +1,12 @@
+# Package Files #
+
+*.zip
+*.gjf
+*.bcf
+*.dat
+
+
+wrong.out
+Merot180.out
+/.project
+/He2rev.out
