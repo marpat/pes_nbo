@@ -1,5 +1,7 @@
-# Package Files #
+## Directory-based project format:
+.idea/
 
+# Package Files #
 *.zip
 *.gjf
 *.bcf
@@ -8,5 +10,6 @@
 
 wrong.out
 Merot180.out
-/.project
-/He2rev.out
+He2rev.out
+.project
+

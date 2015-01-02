@@ -1,20 +1,54 @@
+# -*- coding: utf-8; -*-
+
 """
-Originally created on May 4, enhanced on July 23, 2014
+Originally created on May 4, 2014. Enhanced on July 23, 2014.
 Part of the script was adapted from
 http://verahill.blogspot.com/2013/09/514-extracting-data-form-pes-scan-with.html
-@author: Marcel Patek
 Uses Python 2.7 and libraries as implemented in Anaconda from Contibuum Analytics
 
 Run from the terminal window (cmd) or shell as:
 >> python pes_nbo3.py output_file.out
 
-Requires Gaussian PES output file (output_file.out) from Gaussian PES job.
+Requires Gaussian PES output file (output_file.out) from the Gaussian PES job.
 Examples of such files are part of the download in the GitHub repo.
 """
+
+# author:   'Marcel Patek'
+# filename: 'test.py'
+# date:      7/23/2014
+# version:  '1.1'
+# email:    'chemgplus@gmail.com'
+# license:  'GNU3'
+# usage:     python pes_nbo3.py output_file.out
+
+'''
+ * Copyright (C) 2014 Marcel Patek
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * For a copy of the GNU General Public License,
+ * see <http://www.gnu.org/licenses/>.
+'''
 
 import sys
 import os
 import re
+
+
+def print_frame_top(m, c):
+    print(c * m)
+
+
+def print_frame_bot(m, c):
+    print(c * m)
 
 
 def main(argv):
@@ -38,14 +72,6 @@ def main(argv):
         sys.stderr.write("\n ERROR: This does not seem to be the right file. Scan coordinate is missing.\n\n")
         print_frame_bot(60, '+')
         return 1
-
-
-def print_frame_top(m, c):
-    print(c * m)
-
-
-def print_frame_bot(m, c):
-    print(c * m)
 
 
 def rundif(it, zero):
@@ -216,7 +242,7 @@ def list_get(l, coordinate, v = "R"):
 if __name__ == "__main__":
     # Errors in the input - get the usage and errors
     if main(sys.argv) == 1:
-        sys.exit()
+        raise SystemExit
 
     # Read data in from terminal
     infile = sys.argv[1]
@@ -379,7 +405,7 @@ if __name__ == "__main__":
 
     rawdata, energies, coords = getrawdata(infile)
 
-        # Format coords steps
+    # Format coords steps
     regexR = re.compile("^R.+")
     regexA = re.compile("^A.+")
     regexD = re.compile("^D.+")
